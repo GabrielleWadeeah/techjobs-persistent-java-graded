@@ -15,16 +15,18 @@ import java.util.Optional;
 @RequestMapping("skills")
 public class SkillController {
 
-    @Autowired // auto-wires bean onto field
+    @Autowired // auto-wires bean onto field (dependency injection)
     private SkillRepository skillRepository;
 
     //Index method that responds at "/skills", with a list of all skills in database
     //findAll, save, findById (methods we will use)
-    @GetMapping()
-    public String displaySkillIndex(Model model){
-        model.addAttribute("skills", skillRepository.findAll()); //lists all Skills in index
-        return "skills/index";
-    }
+
+        @GetMapping("")
+        public String index(Model model){
+            model.addAttribute("title", "All Skills");
+            model.addAttribute("skills", skillRepository.findAll()); //lists all Skills in index
+            return "skills/index";
+        }
 
     @GetMapping("add")
     public String displayAddSkillForm(Model model) {
@@ -38,6 +40,7 @@ public class SkillController {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Skill");
+            model.addAttribute("skills", skillRepository.findAll());
             return "skills/add";
         }
 

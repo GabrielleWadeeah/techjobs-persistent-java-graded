@@ -20,8 +20,9 @@ public class EmployerController {
 
     //Index method that responds at "/employers", with a list of all employers in database
     //findAll, save, findById (methods we will use)
-    @GetMapping()
-    public String displayEmployerIndex(Model model){
+    @GetMapping("")
+    public String index(Model model){
+        model.addAttribute("title", "All Employers");
         model.addAttribute("employers", employerRepository.findAll()); //lists all Employers in index
         return "employers/index";
     }
