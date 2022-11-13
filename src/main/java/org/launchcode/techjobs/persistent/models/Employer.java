@@ -22,7 +22,12 @@ public class Employer extends AbstractEntity {
 
     //constructor
     public Employer(String location) {
+
         this.location = location;
+    }
+
+    //no arg constructor
+    public Employer(){
     }
 
     //Accessor methods
@@ -34,8 +39,4 @@ public class Employer extends AbstractEntity {
         this.location = location;
     }
 
-    //no arg constructor
-    public Employer(){
-        super();
-    }
 }

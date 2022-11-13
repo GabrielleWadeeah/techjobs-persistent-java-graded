@@ -40,7 +40,6 @@ public class SkillController {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Skill");
-            model.addAttribute("skills", skillRepository.findAll());
             return "skills/add";
         }
 
